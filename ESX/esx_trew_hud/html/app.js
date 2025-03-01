@@ -335,11 +335,6 @@ window.onload = function () {
 					if (data.siren == true) { document.querySelector('#vehicle-gear').classList.add('pulsing'); }
 					else { document.querySelector('#vehicle-gear').classList.remove('pulsing'); }
 
-
-
-
-
-
 					if (vehicleLights.classList.contains(data.lights) == false) {
 						vehicleLights.classList.remove('normal','high','off');
 						vehicleLights.classList.add(data.lights);
@@ -347,15 +342,6 @@ window.onload = function () {
 						if (data.lights == 'high') { vehicleLights.querySelector('i img').src = 'img/vehicle-lights-high.png'; }
 						else { vehicleLights.querySelector('i img').src = 'img/vehicle-lights.png'; }
 					}
-
-
-
-
-
-
-
-
-
 
 					if (vehicleSignals.classList.contains(data.signals) == false) {
 
@@ -380,21 +366,8 @@ window.onload = function () {
 
 							eventCallback.sound();
 						}
-
-
 					}
 					
-					
-
-
-
-
-
-
-
-
-
-
 					vehicleFuel.querySelector('span').style.height = data.fuel+'%';
 
 					if (data.fuel <= 35) {
@@ -413,9 +386,7 @@ window.onload = function () {
 
 						eventCallback.sound();
 					}
-
 				}
-				
 			},
 			
 			toggleUi: function(data) {
@@ -452,34 +423,7 @@ window.onload = function () {
 					sound.setAttribute('src', soundFile);
 					sound.play();
 				}
-
-
 			},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
-
-
-
-
-
-
-
-
 		};
 
 		document.querySelectorAll('.icon i').addMultiListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () { this.parentElement.classList.remove('pulse'); this.parentElement.classList.remove('shooting'); });
@@ -488,10 +432,14 @@ window.onload = function () {
 			this.classList.remove('fadeOut', 'fadeIn');
 		});
 
-
-
 		window.addEventListener('message', function(event) {
+			if (event.data.action === "reload") {
+				location.reload(); // Fully reload the UI when the script restarts
+				return; // Stop further processing
+			}
+			
 			eventCallback[event.data.action](event.data);
 		});
+		
 
 }
