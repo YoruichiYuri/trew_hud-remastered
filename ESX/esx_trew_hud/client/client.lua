@@ -1,3 +1,5 @@
+local ESX = exports["es_extended"]:getSharedObject()
+
 local zones = json.decode('{"HAWICK":"Hawick","ELYSIAN":"Elysian Island","SANDY":"Sandy Shores","DESRT":"Grand Senora Desert","LEGSQU":"Legion Square","MTCHIL":"Mount Chiliad","PALMPOW":"Palmer-Taylor Power Station","CCREAK":"Cassidy Creek","PROL":"North Yankton","PBLUFF":"Pacific Bluffs","MIRR":"Mirror Park","RICHM":"Richman","ZQ_UAR":"Davis Quartz","EAST_V":"East Vinewood","LAGO":"Lago Zancudo","BRADT":"Braddock Tunnel","NCHU":"North Chumash","CYPRE":"Cypress Flats","GALFISH":"Galilee","ZP_ORT":"Port of South Los Santos","PALETO":"Paleto Bay","BURTON":"Burton","GRAPES":"Grapeseed","DELSOL":"La Puerta","ALAMO":"Alamo Sea","DELPE":"Del Perro","ARMYB":"Fort Zancudo","STAD":"Maze Bank Arena","MORN":"Morningwood","CANNY":"Raton Canyon","ISHeist":"Cayo Perico Island","TEXTI":"Textile City","ALTA":"Alta","DTVINE":"Downtown Vinewood","HARMO":"Harmony","MURRI":"Murrieta Heights","KOREAT":"Little Seoul","GALLI":"Galileo Park","DOWNT":"Downtown","ZANCUDO":"Zancudo River","WVINE":"West Vinewood","BAYTRE":"Baytree Canyon","WINDF":"Ron Alternates Wind Farm","VINE":"Vinewood","EBURO":"El Burro Heights","DAVIS":"Davis","STRAW":"Strawberry","TONGVAV":"Tongva Valley","PALHIGH":"Palomino Highlands","TONGVAH":"Tongva Hills","CALAFB":"Calafia Bridge","CHAMH":"Chamberlain Hills","PBOX":"Pillbox Hill","MTJOSE":"Mount Josiah","TERMINA":"Terminal","HUMLAB":"Humane Labs and Research","PALFOR":"Paleto Forest","PALCOV":"Paleto Cove","TATAMO":"Tataviam Mountains","LDAM":"Land Act Dam","MOVIE":"Richards Majestic","VCANA":"Vespucci Canals","HORS":"Vinewood Racetrack","SKID":"Mission Row","CHU":"Chumash","SANCHIA":"San Chianski Mountain Range","CHIL":"Vinewood Hills","ROCKF":"Rockford Hills","RTRAK":"Redwood Lights Track","RGLEN":"Richman Glen","CMSW":"Chiliad Mountain State Wilderness","PROCOB":"Procopio Beach","RANCHO":"Rancho","GREATC":"Great Chaparral","BRADP":"Braddock Pass","ELGORL":"El Gordo Lighthouse","VESP":"Vespucci","OCEANA":"Pacific Ocean","JAIL":"Bolingbroke Penitentiary","OBSERV":"Galileo Observatory","BEACH":"Vespucci Beach","BHAMCA":"Banham Canyon","GOLF":"GWC and Golfing Society","SLAB":"Stab City","LACT":"Land Act Reservoir","LMESA":"La Mesa","DELBE":"Del Perro Beach","BANNING":"Banning","MTGORDO":"Mount Gordo","LOSPUER":"La Puerta","NOOSE":"N.O.O.S.E","AIRP":"Los Santos International Airport"}')
 
 local AllWeapons = json.decode('{"melee":{"dagger":"0x92A27487","bat":"0x958A4A8F","bottle":"0xF9E6AA4B","crowbar":"0x84BD7BFD","unarmed":"0xA2719263","flashlight":"0x8BB05FD7","golfclub":"0x440E4788","hammer":"0x4E875F73","hatchet":"0xF9DCBF2D","knuckle":"0xD8DF3C3C","knife":"0x99B507EA","machete":"0xDD5DF8D9","switchblade":"0xDFE37640","nightstick":"0x678B81B1","wrench":"0x19044EE0","battleaxe":"0xCD274149","poolcue":"0x94117305","stone_hatchet":"0x3813FC08"},"handguns":{"pistol":"0x1B06D571","pistol_mk2":"0xBFE256D4","combatpistol":"0x5EF9FEC4","appistol":"0x22D8FE39","stungun":"0x3656C8C1","pistol50":"0x99AEEB3B","snspistol":"0xBFD21232","snspistol_mk2":"0x88374054","heavypistol":"0xD205520E","vintagepistol":"0x83839C4","flaregun":"0x47757124","marksmanpistol":"0xDC4DB296","revolver":"0xC1B3C3D1","revolver_mk2":"0xCB96392F","doubleaction":"0x97EA20B8","raypistol":"0xAF3696A1"},"smg":{"microsmg":"0x13532244","smg":"0x2BE6766B","smg_mk2":"0x78A97CD0","assaultsmg":"0xEFE7E2DF","combatpdw":"0xA3D4D34","machinepistol":"0xDB1AA450","minismg":"0xBD248B55","raycarbine":"0x476BF155"},"shotguns":{"pumpshotgun":"0x1D073A89","pumpshotgun_mk2":"0x555AF99A","sawnoffshotgun":"0x7846A318","assaultshotgun":"0xE284C527","bullpupshotgun":"0x9D61E50F","musket":"0xA89CB99E","heavyshotgun":"0x3AABBBAA","dbshotgun":"0xEF951FBB","autoshotgun":"0x12E82D3D"},"assault_rifles":{"assaultrifle":"0xBFEFFF6D","assaultrifle_mk2":"0x394F415C","carbinerifle":"0x83BF0278","carbinerifle_mk2":"0xFAD1F1C9","advancedrifle":"0xAF113F99","specialcarbine":"0xC0A3098D","specialcarbine_mk2":"0x969C3D67","bullpuprifle":"0x7F229F94","bullpuprifle_mk2":"0x84D6FAFD","compactrifle":"0x624FE830"},"machine_guns":{"mg":"0x9D07F764","combatmg":"0x7FD62962","combatmg_mk2":"0xDBBD7280","gusenberg":"0x61012683"},"sniper_rifles":{"sniperrifle":"0x5FC3C11","heavysniper":"0xC472FE2","heavysniper_mk2":"0xA914799","marksmanrifle":"0xC734385A","marksmanrifle_mk2":"0x6A6C02E0"},"heavy_weapons":{"rpg":"0xB1CA77B1","grenadelauncher":"0xA284510B","grenadelauncher_smoke":"0x4DD2DC56","minigun":"0x42BF8A85","firework":"0x7F7497E5","railgun":"0x6D544C99","hominglauncher":"0x63AB0442","compactlauncher":"0x781FE4A","rayminigun":"0xB62D1F67"},"throwables":{"grenade":"0x93E220BD","bzgas":"0xA0973D5E","smokegrenade":"0xFDBC8A50","flare":"0x497FACC3","molotov":"0x24B17070","stickybomb":"0x2C3731D9","proxmine":"0xAB564B93","snowball":"0x787F0BB","pipebomb":"0xBA45E8B8","ball":"0x23C9F95C"},"misc":{"petrolcan":"0x34A67B97","fireextinguisher":"0x60EC506","parachute":"0xFBAB5776"}}')
@@ -5,7 +7,13 @@ local vehiclesCars = {0,1,2,3,4,5,6,7,8,9,10,11,12,17,18,19,20};
 local isTalking = false
 local Playerid = PlayerId()
 local ServerId = 0
+
 function Startup()
+	while ESX == nil do
+        print("Waiting for ESX to load...")
+        Wait(100)
+    end
+	
 	ServerId = GetPlayerServerId(Playerid)
 	SendNUIMessage({ action = 'ui', config = Config.ui })
 	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
@@ -14,8 +22,25 @@ function Startup()
 	SendNUIMessage({ action = 'setMoney', id = 'plyId', value = tostring(ServerId) })
 end
 
+RegisterNetEvent('esx:onPlayerSpawn')
 AddEventHandler('esx:onPlayerSpawn', function()
-	Startup()
+	while ESX == nil do Wait(10) end
+    Startup()
+end)
+
+AddEventHandler('onResourceStart', function(resourceName)
+    if resourceName == GetCurrentResourceName() then
+        print("[HUD] Restart detected, reloading UI...")
+
+        SendNUIMessage({ action = 'reload' }) -- Reset the UI
+        Wait(500) -- Small delay before reinitializing
+
+        -- **Force Fetch Player Data Before Running Startup()**
+        ESX.TriggerServerCallback('esx:getPlayerData', function(data)
+            ESX.PlayerData = data -- Update ESX Data
+            Startup() -- Now UI should initialize properly
+        end)
+    end
 end)
 
 -- Vehicle Info
@@ -28,10 +53,9 @@ local currSpeed = 0.0
 local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
 CreateThread(function()
-	Startup()
 	while true do
 		Wait(200)
-		local player = ESX.PlayerData.ped
+		local player = PlayerPedId()
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local position = GetEntityCoords(player)
 		local vehicleIsOn = GetIsVehicleEngineRunning(vehicle)
@@ -111,7 +135,7 @@ CreateThread(function()
 				local prevSpeed = currSpeed
                 currSpeed = vehicleSpeedSource
 
-                SetPedConfigFlag(ESX.PlayerData.ped, 32, true)
+                SetPedConfigFlag(PlayerPedId(), 32, true)
 
                 if not seatbeltIsOn then
                 	local vehIsMovingFwd = GetEntitySpeedVector(vehicle, true).y > 1.0
@@ -181,7 +205,7 @@ CreateThread(function()
 		SendNUIMessage(vehicleInfo)
 	
 		if Config.ui.showLocation then
-			local player = ESX.PlayerData.ped
+			local player = PlayerPedId()
 			local position = GetEntityCoords(player)
 			local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
 			local streetName = GetStreetNameFromHashKey(GetStreetNameAtCoord(position.x, position.y, position.z))
@@ -215,7 +239,6 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-
 	while true do
 		Wait(2000)
 
@@ -227,12 +250,10 @@ CreateThread(function()
 			showPlayerStatus = (showPlayerStatus+1)
 
 			playerStatus.isdead = ESX.PlayerData.dead
-
 			playerStatus['status'][showPlayerStatus] = {
 				name = 'health',
-				value = GetEntityHealth(ESX.PlayerData.ped) - 100
+				value = GetEntityHealth(PlayerPedId()) - 100
 			}
-
 		end
 
 		if Config.ui.showDate then
@@ -244,7 +265,7 @@ CreateThread(function()
 
 			playerStatus['status'][showPlayerStatus] = {
 				name = 'armor',
-				value = GetPedArmour(ESX.PlayerData.ped),
+				value = GetPedArmour(PlayerPedId()),
 			}
 		end
 
@@ -261,145 +282,147 @@ CreateThread(function()
 			SendNUIMessage(playerStatus)
 		end
 
-	if ESX.PlayerData.job then
-  	   local job
-  	   local blackMoney
-  	   local bank
-	   local money
+		if ESX.PlayerData.job then
+			local job
+			local blackMoney
+			local bank
+			local money
 
-        if ESX.PlayerData.job.label == ESX.PlayerData.job.grade_label then
-          job = ESX.PlayerData.job.grade_label
-        else
-          job = ESX.PlayerData.job.label .. ': ' .. ESX.PlayerData.job.grade_label
-        end
+			if ESX.PlayerData.job.label == ESX.PlayerData.job.grade_label then
+				job = ESX.PlayerData.job.grade_label
+			else
+				job = ESX.PlayerData.job.label .. ': ' .. ESX.PlayerData.job.grade_label
+			end
 
-        for i=1, #ESX.PlayerData.accounts, 1 do
-          if ESX.PlayerData.accounts[i].name == 'black_money' then
-                blackMoney = ESX.PlayerData.accounts[i].money
-          elseif ESX.PlayerData.accounts[i].name == 'bank' then
-                bank = ESX.PlayerData.accounts[i].money
-             elseif ESX.PlayerData.accounts[i].name == 'money' then
-                money = ESX.PlayerData.accounts[i].money
-          end
-        end
+			for i=1, #ESX.PlayerData.accounts, 1 do
+				if ESX.PlayerData.accounts[i].name == 'black_money' then
+					blackMoney = ESX.PlayerData.accounts[i].money
+				elseif ESX.PlayerData.accounts[i].name == 'bank' then
+					bank = ESX.PlayerData.accounts[i].money
+				elseif ESX.PlayerData.accounts[i].name == 'money' then
+					money = ESX.PlayerData.accounts[i].money
+				end
+			end
 
-		SendNUIMessage({ action = 'setText', id = 'job', value = job })
-		SendNUIMessage({ action = 'setMoney', id = 'wallet', value = money })
-		SendNUIMessage({ action = 'setMoney', id = 'bank', value = bank })
-		SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = blackMoney })
+			SendNUIMessage({ action = 'setText', id = 'job', value = job })
+			SendNUIMessage({ action = 'setMoney', id = 'wallet', value = money })
+			SendNUIMessage({ action = 'setMoney', id = 'bank', value = bank })
+			SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = blackMoney })
 
-  		if ESX.PlayerData.job.grade_name and ESX.PlayerData.job.grade_name == 'boss' then
-  			if (Config.ui.showSocietyMoney) then
-  				SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
-  			end
-  			ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
-  				SendNUIMessage({ action = 'setMoney', id = 'society', value = money })
-  			end, ESX.PlayerData.job.name)
-  		else
-  			SendNUIMessage({ action = 'element', task = 'disable', value = 'society' })
+			if ESX.PlayerData.job.grade_name and ESX.PlayerData.job.grade_name == 'boss' then
+				if (Config.ui.showSocietyMoney) then
+					SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
+				end
+				ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
+					SendNUIMessage({ action = 'setMoney', id = 'society', value = money })
+				end, ESX.PlayerData.job.name)
+			else
+				SendNUIMessage({ action = 'element', task = 'disable', value = 'society' })
+			end
+		end
+
+  		local playerStatus 
+  		local showPlayerStatus = 0
+  		playerStatus = { action = 'setStatus', status = {} }
+
+  		if Config.ui.showHunger then
+  			showPlayerStatus = (showPlayerStatus+1)
+
+  			TriggerEvent('esx_status:getStatus', 'hunger', function(status)
+  				playerStatus['status'][showPlayerStatus] = {
+  					name = 'hunger',
+  					value = math.floor(100-status.getPercent())
+  				}
+  			end)
+
   		end
-  	end
 
-  	local playerStatus 
-  	local showPlayerStatus = 0
-  	playerStatus = { action = 'setStatus', status = {} }
+  		if Config.ui.showThirst then
+  			showPlayerStatus = (showPlayerStatus+1)
 
-  	if Config.ui.showHunger then
-  		showPlayerStatus = (showPlayerStatus+1)
+  			TriggerEvent('esx_status:getStatus', 'thirst', function(status)
+  				playerStatus['status'][showPlayerStatus] = {
+  					name = 'thirst',
+  					value = math.floor(100-status.getPercent())
+  				}
+  			end)
+  		end
 
-  		TriggerEvent('esx_status:getStatus', 'hunger', function(status)
-  			playerStatus['status'][showPlayerStatus] = {
-  				name = 'hunger',
-  				value = math.floor(100-status.getPercent())
-  			}
-  		end)
+  		if showPlayerStatus > 0 then
+  	    	SendNUIMessage(playerStatus)
+  		end
 
-  	end
-
-  	if Config.ui.showThirst then
-  		showPlayerStatus = (showPlayerStatus+1)
-
-  		TriggerEvent('esx_status:getStatus', 'thirst', function(status)
-  			playerStatus['status'][showPlayerStatus] = {
-  				name = 'thirst',
-  				value = math.floor(100-status.getPercent())
-  			}
-  		end)
-  	end
-
-  	if showPlayerStatus > 0 then
-  	    SendNUIMessage(playerStatus)
-  	end
-
-	  if Config.ui.showVoice then
-		AddEventHandler('pma-voice:setTalkingMode', function()
-			SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity and LocalPlayer.state.proximity.mode or "Normal" })
-		end)
-	  end
+	  	if Config.ui.showVoice then
+			AddEventHandler('pma-voice:setTalkingMode', function()
+				SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity and LocalPlayer.state.proximity.mode or "Normal" })
+			end)
+		end
     end
 end)
 
 -- Weapons
-if Config.ui.showWeapons then
-	CreateThread(function()
-			while true do
-				local Sleep = 800
 
-				local player = ESX.PlayerData.ped
-				local status = {}
+CreateThread(function()
+	if Config.ui.showWeapons then
+		while true do
+			local Sleep = 800
+			local player = PlayerPedId()
+			local status = {}
 
-				if IsPedArmed(player, 7) then
-					Sleep = 100
-					local weapon = GetSelectedPedWeapon(player)
-					local ammoTotal = GetAmmoInPedWeapon(player,weapon)
-					local bool,ammoClip = GetAmmoInClip(player,weapon)
-					local ammoRemaining = math.floor(ammoTotal - ammoClip)
-					
-					status['armed'] = true
+			if IsPedArmed(player, 7) then
+				Sleep = 100
+				local weapon = GetSelectedPedWeapon(player)
+				local ammoTotal = GetAmmoInPedWeapon(player,weapon)
+				local bool,ammoClip = GetAmmoInClip(player,weapon)
+				local ammoRemaining = math.floor(ammoTotal - ammoClip)
+				
+				status['armed'] = true
 
-					for key,value in pairs(AllWeapons) do
+				for key,value in pairs(AllWeapons) do
 
-						for keyTwo,valueTwo in pairs(AllWeapons[key]) do
-							if weapon == joaat('weapon_'..keyTwo) then
-								status['weapon'] = keyTwo
+					for keyTwo,valueTwo in pairs(AllWeapons[key]) do
+						if weapon == joaat('weapon_'..keyTwo) then
+							status['weapon'] = keyTwo
 
 
-								if key == 'melee' then
+							if key == 'melee' then
+								SendNUIMessage({ action = 'element', task = 'disable', value = 'weapon_bullets' })
+								SendNUIMessage({ action = 'element', task = 'disable', value = 'bullets' })
+							else
+								if keyTwo == 'stungun' then
 									SendNUIMessage({ action = 'element', task = 'disable', value = 'weapon_bullets' })
 									SendNUIMessage({ action = 'element', task = 'disable', value = 'bullets' })
 								else
-									if keyTwo == 'stungun' then
-										SendNUIMessage({ action = 'element', task = 'disable', value = 'weapon_bullets' })
-										SendNUIMessage({ action = 'element', task = 'disable', value = 'bullets' })
-									else
-										SendNUIMessage({ action = 'element', task = 'enable', value = 'weapon_bullets' })
-										SendNUIMessage({ action = 'element', task = 'enable', value = 'bullets' })
-									end
+									SendNUIMessage({ action = 'element', task = 'enable', value = 'weapon_bullets' })
+									SendNUIMessage({ action = 'element', task = 'enable', value = 'bullets' })
 								end
-
 							end
+
 						end
-
 					end
 
-					SendNUIMessage({ action = 'setText', id = 'weapon_clip', value = ammoClip })
-					SendNUIMessage({ action = 'setText', id = 'weapon_ammo', value = ammoRemaining })
-
-				else
-					if status['armed'] then
-						status['armed'] = false
-						SendNUIMessage({ action = 'updateWeapon', status = status })
-					end
 				end
 
-				SendNUIMessage({ action = 'updateWeapon', status = status })
-				Wait(Sleep)
-			end
-	end)
-end
+				SendNUIMessage({ action = 'setText', id = 'weapon_clip', value = ammoClip })
+				SendNUIMessage({ action = 'setText', id = 'weapon_ammo', value = ammoRemaining })
 
-ESX.RegisterInput("cruise", "[HUD] Cruise Control", "keyboard", Config.vehicle.keys.cruiser, function()
-	local player = ESX.PlayerData.ped
+			else
+				if status['armed'] then
+					status['armed'] = false
+					SendNUIMessage({ action = 'updateWeapon', status = status })
+				end
+			end
+
+			SendNUIMessage({ action = 'updateWeapon', status = status })
+			Wait(Sleep)
+		end
+	end
+end)
+
+RegisterKeyMapping('cruise', '[HUD] Cruise Control', 'keyboard', Config.vehicle.keys.cruiser)
+
+RegisterCommand('cruise', function()
+	local player = PlayerPedId()
 	local vehicle = GetVehiclePedIsIn(player, false)
 	local vehicleSpeedSource = GetEntitySpeed(vehicle)
 	if  GetPedInVehicleSeat(vehicle, -1) ~= player then
@@ -407,16 +430,18 @@ ESX.RegisterInput("cruise", "[HUD] Cruise Control", "keyboard", Config.vehicle.k
 	end
 	if vehicleCruiser == 'on' then
 		vehicleCruiser = 'off'
-		SetEntityMaxSpeed(vehicle, GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel"))
-		
+		local maxSpeed = GetVehicleHandlingFloat(vehicle, "CHandlingData", "fInitialDriveMaxFlatVel") or 50.0
+		SetEntityMaxSpeed(vehicle, maxSpeed)		
 	else
 		vehicleCruiser = 'on'
 		SetEntityMaxSpeed(vehicle, vehicleSpeedSource)
 	end
-end)
+end,false)
 
-ESX.RegisterInput("seatbelt", "[HUD] Seatbelt", "keyboard", Config.vehicle.keys.seatbelt, function()
-	local player = ESX.PlayerData.ped
+RegisterKeyMapping('seatbelt', '[HUD] Seatbelt', 'keyboard', Config.vehicle.keys.seatbelt)
+
+RegisterCommand('seatbelt', function()
+	local player = PlayerPedId()
 	local vehicle = GetVehiclePedIsIn(player, false)
 	local vehicleClass = GetVehicleClass(vehicle)
 	if not (IsPedInAnyVehicle(player, false) and GetIsVehicleEngineRunning(vehicle)) then
@@ -426,10 +451,13 @@ ESX.RegisterInput("seatbelt", "[HUD] Seatbelt", "keyboard", Config.vehicle.keys.
 		return 
 	end
 	seatbeltIsOn = not seatbeltIsOn
-end)
+	print("seatbelt is now".. tostring(seatbeltIsOn))
+end,false)
 
-ESX.RegisterInput("leftindicator", "[HUD] Left Indicator", "keyboard", Config.vehicle.keys.signalLeft, function()
-	local player = ESX.PlayerData.ped
+RegisterKeyMapping('leftindicator', '[HUD] Left Indicator', 'keyboard', Config.vehicle.keys.signalLeft)
+
+RegisterCommand('leftindicator', function()
+	local player = PlayerPedId()
 	local vehicle = GetVehiclePedIsIn(player, false)
 	local vehicleClass = GetVehicleClass(vehicle)
 	if has_value(vehiclesCars, vehicleClass) ~= true then
@@ -442,10 +470,12 @@ ESX.RegisterInput("leftindicator", "[HUD] Left Indicator", "keyboard", Config.ve
 	end
 
 	TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
-end)
+end,false)
 
-ESX.RegisterInput("rightindicator", "[HUD] Right Indicator", "keyboard", Config.vehicle.keys.signalRight, function()
-	local player = ESX.PlayerData.ped
+RegisterKeyMapping('rightindicator', '[HUD] Right Indicator', 'keyboard', Config.vehicle.keys.signalRight)
+
+RegisterCommand('rightindicator', function()
+	local player = PlayerPedId()
 	local vehicle = GetVehiclePedIsIn(player, false)
 	local vehicleClass = GetVehicleClass(vehicle)
 	if has_value(vehiclesCars, vehicleClass) ~= true then
@@ -458,10 +488,12 @@ ESX.RegisterInput("rightindicator", "[HUD] Right Indicator", "keyboard", Config.
 	end
 
 	TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
-end)
+end,false)
 
-ESX.RegisterInput("bothindicator", "[HUD] Both Indicators", "keyboard", Config.vehicle.keys.signalBoth, function()
-	local player = ESX.PlayerData.ped
+RegisterKeyMapping('bothindicator', '[HUD] Both Indicator', 'keyboard', Config.vehicle.keys.signalBoth)
+
+RegisterCommand('bothindicator', function()
+	local player = PlayerPedId()
 	local vehicle = GetVehiclePedIsIn(player, false)
 	local vehicleClass = GetVehicleClass(vehicle)
 	if has_value(vehiclesCars, vehicleClass) ~= true then
@@ -474,37 +506,20 @@ ESX.RegisterInput("bothindicator", "[HUD] Both Indicators", "keyboard", Config.v
 	end
 
 	TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
-end)
+end,false)
 
 AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
-	local driver = GetVehiclePedIsIn(ESX.PlayerData.ped, false)
-	local hasTrailer,vehicleTrailer = GetVehicleTrailerVehicle(driver)
-	local leftLight
-	local rightLight
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+    if not vehicle or not DoesEntityExist(vehicle) then return end
 
-	if status == 'left' then
-		leftLight = false
-		rightLight = true
-		if hasTrailer then driver = vehicleTrailer end
-	elseif status == 'right' then
-		leftLight = true
-		rightLight = false
-		if hasTrailer then driver = vehicleTrailer end
+    local hasTrailer, vehicleTrailer = GetVehicleTrailerVehicle(vehicle)
+    if hasTrailer then vehicle = vehicleTrailer end
 
-	elseif status == 'both' then
-		leftLight = true
-		rightLight = true
-		if hasTrailer then driver = vehicleTrailer end
+    local leftLight = status == 'left' or status == 'both'
+    local rightLight = status == 'right' or status == 'both'
 
-	else
-		leftLight = false
-		rightLight = false
-		if hasTrailer then driver = vehicleTrailer end
-
-	end
-
-	SetVehicleIndicatorLights(driver, 0, leftLight)
-	SetVehicleIndicatorLights(driver, 1, rightLight)
+    SetVehicleIndicatorLights(vehicle, 0, leftLight)
+    SetVehicleIndicatorLights(vehicle, 1, rightLight)
 end)
 
 function trewDate()
@@ -630,8 +645,9 @@ exports('setStatus', function(args)
 	SendNUIMessage(playerStatus)
 end)
 
-if not Config.ui.showMinimapHealth then 
-	Citizen.CreateThread(function()
+
+Citizen.CreateThread(function()
+	if not Config.ui.showMinimapHealth then 
 		local minimap = RequestScaleformMovie("minimap")
 		SetBigmapActive(true, false)
 		Wait(0)
@@ -646,6 +662,16 @@ if not Config.ui.showMinimapHealth then
 			end
 			Wait(Sleep)
 		end
-	
-	end)
-end
+	end
+end)
+
+CreateThread(function()
+    while true do
+        Wait(0) -- Run every frame
+		-- in case this doesn't work check other car systems that might want to keep the ped in or out
+        if seatbeltIsOn then
+            DisableControlAction(0, 75, true)  -- Disable Exit Vehicle (F key)
+            DisableControlAction(27, 75, true) -- Disable Exit Vehicle (Controller)
+        end
+    end
+end)
